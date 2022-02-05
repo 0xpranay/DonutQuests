@@ -1,0 +1,33 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.1);
+
+  .brand {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .desc {
+      font-size: 2rem;
+      font-weight: bolder;
+    }
+    .logo {
+      font-size: 5rem;
+      .reddit {
+        color: orangered;
+        font-size: 3rem;
+        display: inline;
+      }
+    }
+  }
+  .links {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+}
