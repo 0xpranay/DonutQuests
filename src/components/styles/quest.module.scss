@@ -1,0 +1,91 @@
+.task {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.1);
+  border: 1px solid black;
+  border-radius: 20px;
+  height: 20rem;
+  padding: 1rem;
+  &Header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    padding: 1rem;
+    .infoPanel {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      width: 5rem;
+      .round {
+        background-color: #282e39;
+        color: white;
+        padding: 0.5rem;
+        border-radius: 5px;
+        margin-bottom: 0.5rem;
+        width: 100%;
+        font-weight: bolder;
+      }
+      .reward {
+        background-color: #282e39;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5rem;
+        border-radius: 5px;
+        width: 100%;
+        font-weight: bolder;
+        img {
+          width: 50%;
+        }
+      }
+    }
+  }
+  &Body {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: left;
+    font-size: 2rem;
+    font-weight: bolder;
+    background: #c084fc;
+    background: -webkit-linear-gradient(to right, #c084fc 0%, #60a5fa 100%);
+    background: -moz-linear-gradient(to right, #c084fc 0%, #60a5fa 100%);
+    background: linear-gradient(to right, #c084fc 0%, #60a5fa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+  }
+  &Footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    .details {
+      background-color: #394150;
+      padding: 1rem;
+      border-radius: 10px;
+      width: 30%;
+      font-weight: bolder;
+      font-size: 1rem;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    .claim {
+      background-color: #394150;
+      padding: 1rem;
+      border-radius: 10px;
+      width: 30%;
+      font-weight: bolder;
+      font-size: 1rem;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}

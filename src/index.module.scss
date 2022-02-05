@@ -1,0 +1,47 @@
+// Template code
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+html {
+  height: 100%;
+  width: 100%;
+}
+body {
+  background: radial-gradient(
+    #fff0fe,
+    #f5f1ff,
+    #ffebfd,
+    #e5fff7,
+    #e1feff,
+    #e1ffed
+  );
+  background-size: 200% 200%;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+  color: white;
+  text-rendering: geometricPrecision;
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+a,
+a:visited,
+a:hover,
+a:active {
+  color: inherit;
+}
+a:hover {
+  color: black;
+}
+
+ul {
+  list-style-type: none;
+}

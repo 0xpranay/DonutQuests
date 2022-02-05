@@ -1,0 +1,24 @@
+.titleCard {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  padding: 1rem;
+  .title {
+    background: #c084fc;
+    background: -webkit-linear-gradient(to right, #c084fc 0%, #60a5fa 100%);
+    background: -moz-linear-gradient(to right, #c084fc 0%, #60a5fa 100%);
+    background: linear-gradient(to right, #c084fc 0%, #60a5fa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 6rem;
+    font-weight: 800;
+  }
+  .showcase {
+    width: 40%;
+    .imgCard {
+      border-radius: 30px;
+    }
+  }
+}

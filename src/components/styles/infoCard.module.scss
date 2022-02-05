@@ -1,0 +1,47 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 1rem;
+  width: 100%;
+  .textCard {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: rgb(236, 105, 24);
+    font-size: 2rem;
+    border-radius: 30px;
+    padding: 3rem;
+    border: 1px solid black;
+    font-weight: bold;
+    .text {
+      // background: #ff0000; /* fallback for old browsers */
+      // background: -webkit-linear-gradient(
+      //   to right,
+      //   #ff0000,
+      //   #9932cc
+      // ); /* Chrome 10-25, Safari 5.1-6 */
+      // background: linear-gradient(
+      //   to right,
+      //   #ff0000,
+      //   #9932cc
+      // ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      // -webkit-background-clip: text;
+      // background-clip: text;
+      // color: transparent;
+      color: #394150;
+      font-weight: bolder;
+    }
+  }
+}
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+  .textCard {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+}
