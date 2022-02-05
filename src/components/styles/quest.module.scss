@@ -20,18 +20,21 @@
       flex-direction: column;
       justify-content: flex-start;
       align-items: center;
-      width: 5rem;
+      width: 6rem;
       .round {
-        background-color: #282e39;
+        border: 1px solid #282e39;
         color: white;
         padding: 0.5rem;
         border-radius: 5px;
         margin-bottom: 0.5rem;
         width: 100%;
+        color: white;
         font-weight: bolder;
+        background-color: rgba($color: red, $alpha: 0.4);
       }
       .reward {
-        background-color: #282e39;
+        border: 1px solid #282e39;
+        color: #282e39;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -39,8 +42,9 @@
         border-radius: 5px;
         width: 100%;
         font-weight: bolder;
+        background-color: rgba($color: red, $alpha: 0.2);
         img {
-          width: 50%;
+          width: 40%;
         }
       }
     }
@@ -52,13 +56,14 @@
     text-align: left;
     font-size: 2rem;
     font-weight: bolder;
-    background: #c084fc;
-    background: -webkit-linear-gradient(to right, #c084fc 0%, #60a5fa 100%);
-    background: -moz-linear-gradient(to right, #c084fc 0%, #60a5fa 100%);
-    background: linear-gradient(to right, #c084fc 0%, #60a5fa 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    // background: #c084fc;
+    // background: -webkit-linear-gradient(to right, #c084fc 0%, #60a5fa 100%);
+    // background: -moz-linear-gradient(to right, #c084fc 0%, #60a5fa 100%);
+    // background: linear-gradient(to right, #c084fc 0%, #60a5fa 100%);
+    // -webkit-background-clip: text;
+    // -webkit-text-fill-color: transparent;
     margin-bottom: 1rem;
+    color: #282e39;
   }
   &Footer {
     display: flex;
@@ -66,7 +71,9 @@
     align-items: center;
     width: 100%;
     .details {
-      background-color: #394150;
+      border: 1px solid #394150;
+      background-color: rgba($color: pink, $alpha: 0.4);
+      color: black;
       padding: 1rem;
       border-radius: 10px;
       width: 30%;
@@ -74,10 +81,13 @@
       font-size: 1rem;
       &:hover {
         cursor: pointer;
+        background-color: rgba($color: pink, $alpha: 1);
       }
     }
     .claim {
-      background-color: #394150;
+      border: 1px solid #394150;
+      background-color: rgba($color: rgb(0, 255, 195), $alpha: 0.4);
+      color: black;
       padding: 1rem;
       border-radius: 10px;
       width: 30%;
@@ -85,7 +95,36 @@
       font-size: 1rem;
       &:hover {
         cursor: pointer;
+        background-color: rgba($color: rgb(0, 255, 195), $alpha: 0.7);
       }
     }
   }
+}
+
+// MEDIA QUERIES FOLLOW
+
+/* Phones */
+@media only screen and (max-width: 600px) {
+}
+
+/* Normal iPads */
+@media only screen and (min-width: 600px) and (max-width: 768px) {
+}
+
+/*Large iPads */
+@media only screen and (min-width: 769px) and (max-width: 1100px) {
+}
+
+// MEDIA QUERIES FOLLOW
+
+/* Phones */
+@media only screen and (max-width: 600px) {
+}
+
+/* Normal iPads */
+@media only screen and (min-width: 600px) and (max-width: 768px) {
+}
+
+/*Large iPads */
+@media only screen and (min-width: 769px) and (max-width: 1100px) {
 }
