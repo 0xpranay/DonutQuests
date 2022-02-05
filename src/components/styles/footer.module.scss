@@ -1,11 +1,13 @@
 .wrapper {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   margin-top: 2rem;
   padding: 1rem;
-  background: rgba(0, 0, 0, 0.1);
-
+  height: 15rem;
+  background: rgba(rgb(0, 255, 195), 0.5);
+  border-radius: 10px;
+  color: rgba($color: pink, $alpha: 0.4);
   .brand {
     display: flex;
     flex-direction: column;
@@ -17,10 +19,22 @@
     }
     .logo {
       font-size: 5rem;
+      font-weight: bolder;
+      color: plum;
+
       .reddit {
-        color: orangered;
-        font-size: 3rem;
+        color: orangered !important;
+        font-size: 4rem;
         display: inline;
+        text-decoration: none;
+      }
+      .special {
+        display: inline;
+        color: plum;
+      }
+      .special:hover {
+        text-decoration: underline;
+        text-decoration-color: orangered;
       }
     }
   }
@@ -29,5 +43,16 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    font-weight: bolder;
+    font-size: 1rem;
+    li {
+      &:first-child {
+        color: orange;
+      }
+      color: #394150;
+      width: 100%;
+      margin: 0.4rem;
+      list-style: none;
+    }
   }
 }
