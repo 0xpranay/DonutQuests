@@ -6,7 +6,7 @@ export default function Footer() {
       <div className={styles.brand}>
         {/* <div className={styles.desc}>Made by folks at</div> */}
         <a className={styles.logo} href="reddit.com">
-          <p className={styles.reddit}>r/</p>{" "}
+          <p className={styles.reddit}>r/</p>
           <p className={styles.special}>ethtrader</p>
         </a>
       </div>

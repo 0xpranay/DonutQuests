@@ -1,6 +1,10 @@
 import React from "react";
 import styles from "./styles/header.module.scss";
+import ConnectWallet from "./ConnectWallet";
+
+import { useWeb3React } from "@web3-react/core";
 export default function Header() {
+  const { account, active, activate, deactivate } = useWeb3React();
   return (
     <div className={styles.header}>
       <div className={styles.logo}>
@@ -68,14 +72,7 @@ export default function Header() {
         </svg>
       </div>
       <div>
-        <button
-          onClick={() => {
-            alert("Clicked");
-          }}
-          className={styles.connect}
-        >
-          Connect Wallet
-        </button>
+        <ConnectWallet></ConnectWallet>
       </div>
     </div>
   );

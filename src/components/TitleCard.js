@@ -5,7 +5,7 @@ export default function TitleCard() {
     <div className={styles.titleCard}>
       <div className={styles.title}>
         Explore DeFi. <br />
-        Complete quests.
+        Finish quests.
         <br />
         Earn rewards.
       </div>

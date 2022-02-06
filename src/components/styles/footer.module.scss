@@ -5,7 +5,7 @@
   margin-top: 2rem;
   padding: 1rem;
   height: 15rem;
-  background: rgba(rgb(0, 255, 195), 0.5);
+  background: rgba(rgb(0, 255, 195), 0.4);
   border-radius: 10px;
   color: rgba($color: pink, $alpha: 0.4);
   .brand {
@@ -23,14 +23,14 @@
       color: plum;
 
       .reddit {
-        color: orangered !important;
+        color: #394150;
         font-size: 4rem;
         display: inline;
         text-decoration: none;
       }
       .special {
         display: inline;
-        color: plum;
+        color: orangered;
       }
       .special:hover {
         text-decoration: underline;
@@ -47,7 +47,7 @@
     font-size: 1rem;
     li {
       &:first-child {
-        color: orange;
+        color: orangered;
       }
       color: #394150;
       width: 100%;
