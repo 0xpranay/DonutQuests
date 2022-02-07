@@ -2,18 +2,42 @@ import React, { useState } from "react";
 import styles from "./styles/connectWallet.module.scss";
 import { WalletConnectConnector } from "@web3-react/walletconnect-connector";
 import { FortmaticConnector } from "@web3-react/fortmatic-connector";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { PortisConnector } from "@web3-react/portis-connector";
 import {
   InjectedConnector,
   NoEthereumProviderError,
 } from "@web3-react/injected-connector";
 import Jazzicon, { jsNumberForAddress } from "react-jazzicon";
-
 import { useWeb3React } from "@web3-react/core";
 import ReactModal from "react-modal";
-// require("dotenv").config();
-console.log(process.env.REACT_APP_FORTMATIC);
-console.log(process.env.REACT_APP_PORTIS);
+const WalletDetails = () => {
+  const { account, deactivate } = useWeb3React();
+  const shorthand =
+    account.substr(0, 6) + "..." + account.substr(account.length - 4);
+  return (
+    <div className={styles.walletDetails}>
+      <div className={styles.addressBox}>
+        <div className={styles.address}>{shorthand}</div>
+        <Jazzicon diameter={18} seed={jsNumberForAddress(account)} />
+      </div>
+      <div>
+        <button onClick={deactivate} className={styles.disconnect}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24px"
+            viewBox="0 0 24 24"
+            width="24px"
+            fill="#000000"
+          >
+            <path d="M0 0h24v24H0V0z" fill="none" />
+            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  );
+};
 function WalletModal(props) {
   const { account, active, activate, deactivate, chainId } = useWeb3React();
   ReactModal.setAppElement("#root");
@@ -51,7 +75,7 @@ function WalletModal(props) {
                   supportedChainIds: [100],
                 })
               );
-              if (chainId != 100) alert("Please change to XDAI Chain");
+              props.toggleModal();
             }}
           >
             <div>{window.ethereum ? "Metamask" : "Install Metamask"}</div>
@@ -77,6 +101,7 @@ function WalletModal(props) {
                 })
               );
               if (chainId != 100) alert("Please change to XDAI Chain");
+              props.toggleModal();
             }}
           >
             <div>WalletConnect</div>
@@ -131,6 +156,7 @@ function WalletModal(props) {
                   networks: [100],
                 })
               );
+              props.toggleModal();
             }}
           >
             <div>Portis</div>
@@ -183,17 +209,21 @@ export default function ConnectWallet() {
           <WalletModal show={modal} toggleModal={toggleModal}></WalletModal>
         </div>
       ) : (
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          <button className={styles.connect} onClick={deactivate}>
-            Connected
-          </button>
-          <button className={styles.connect} onClick={sign}>
-            Sign
-          </button>
-          <button className={styles.connect} onClick={send}>
-            Send
-          </button>
-        </div>
+        // <div style={{ display: "flex", flexDirection: "column" }}>
+        //   <button className={styles.connect} onClick={deactivate}>
+        //     Connected
+        //   </button>
+        //   <button className={styles.connect} onClick={sign}>
+        //     Sign
+        //   </button>
+        //   <button className={styles.connect} onClick={send}>
+        //     Send
+        //   </button>
+        // </div>
+        // <WalletDetails></WalletDetails>
+        <button onClick={deactivate} className={styles.connect}>
+          Disconnect
+        </button>
       )}
     </>
   );
