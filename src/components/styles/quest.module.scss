@@ -56,12 +56,6 @@
     text-align: left;
     font-size: 2rem;
     font-weight: bolder;
-    // background: #c084fc;
-    // background: -webkit-linear-gradient(to right, #c084fc 0%, #60a5fa 100%);
-    // background: -moz-linear-gradient(to right, #c084fc 0%, #60a5fa 100%);
-    // background: linear-gradient(to right, #c084fc 0%, #60a5fa 100%);
-    // -webkit-background-clip: text;
-    // -webkit-text-fill-color: transparent;
     margin-bottom: 1rem;
     color: #282e39;
   }
@@ -104,6 +98,15 @@
 }
 
 // MEDIA QUERIES FOLLOW
+
+// Only change for super small phones
+@media only screen and (max-width: 400px) {
+  .task {
+    &Body {
+      font-size: 1.8rem;
+    }
+  }
+}
 
 /* Phones */
 @media only screen and (max-width: 600px) {

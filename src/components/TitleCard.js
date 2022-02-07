@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./styles/titleCard.module.scss";
 export default function TitleCard() {
   return (

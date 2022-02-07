@@ -20,20 +20,6 @@
     border: 1px solid black;
     font-weight: bold;
     .text {
-      // background: #ff0000; /* fallback for old browsers */
-      // background: -webkit-linear-gradient(
-      //   to right,
-      //   #ff0000,
-      //   #9932cc
-      // ); /* Chrome 10-25, Safari 5.1-6 */
-      // background: linear-gradient(
-      //   to right,
-      //   #ff0000,
-      //   #9932cc
-      // ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-      // -webkit-background-clip: text;
-      // background-clip: text;
-      // color: transparent;
       color: #394150;
       font-weight: bolder;
     }
@@ -50,12 +36,44 @@
 
 /* Phones */
 @media only screen and (max-width: 600px) {
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    width: 100%;
+    .textCard {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      // justify-content: center;
+      align-items: flex-start;
+      text-align: center;
+      margin-bottom: 1rem;
+      color: rgb(236, 105, 24);
+      font-size: 1.5rem;
+      border-radius: 30px;
+      padding: 1.2rem;
+      border: 1px solid black;
+      font-weight: bold;
+      .text {
+        color: #394150;
+        font-weight: bolder;
+        text-align: left;
+      }
+    }
+  }
 }
 
 /* Normal iPads */
 @media only screen and (min-width: 600px) and (max-width: 768px) {
 }
 
-/*Large iPads */
+/*laptops and Large iPads */
 @media only screen and (min-width: 769px) and (max-width: 1100px) {
+}
+
+/*Them ultrawide boiis*/
+@media only screen and (min-width: 1101) {
 }

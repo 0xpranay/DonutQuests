@@ -6,8 +6,12 @@ export default function InfoCard() {
       <div className={styles.textCard}>
         <p className={styles.text}>
           Donut Quests is an incentive platform where users complete tasks and
-          earn donuts. Complete a task, come back next round and claim your
-          donuts!
+          earn donuts.
+        </p>
+      </div>
+      <div className={styles.textCard}>
+        <p className={styles.text}>
+          Complete a task, come back next round and claim your donuts!
         </p>
       </div>
       <div className={styles.textCard}>
