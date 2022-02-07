@@ -15,7 +15,7 @@ import ReactModal from "react-modal";
 console.log(process.env.REACT_APP_FORTMATIC);
 console.log(process.env.REACT_APP_PORTIS);
 function WalletModal(props) {
-  const { account, active, activate, deactivate } = useWeb3React();
+  const { account, active, activate, deactivate, chainId } = useWeb3React();
   ReactModal.setAppElement("#root");
   return (
     <ReactModal
@@ -51,6 +51,7 @@ function WalletModal(props) {
                   supportedChainIds: [100],
                 })
               );
+              if (chainId != 100) alert("Please change to XDAI Chain");
             }}
           >
             <div>{window.ethereum ? "Metamask" : "Install Metamask"}</div>
@@ -66,18 +67,16 @@ function WalletModal(props) {
           <button
             className={styles.wallet}
             onClick={async () => {
-              console.log("WC");
               await activate(
                 new WalletConnectConnector({
-                  supportedChainIds: [100],
+                  infuraId: undefined,
                   rpc: {
                     100: "https://dai.poa.network/",
                   },
-                  bridge: "https://bridge.walletconnect.org",
-                  qrcode: true,
+                  chainId: 100,
                 })
               );
-              console.log("WC-1");
+              if (chainId != 100) alert("Please change to XDAI Chain");
             }}
           >
             <div>WalletConnect</div>
@@ -101,15 +100,16 @@ function WalletModal(props) {
               />
             </div>
           </button>
-          <button
+          {/* <button
             className={styles.wallet}
             onClick={async () => {
               await activate(
                 new FortmaticConnector({
                   apiKey: process.env.REACT_APP_FORTMATIC,
-                  chainId: 1,
+                  chainId: 100,
                 })
               );
+              if (chainId != 100) alert("Please change to XDAI Chain");
             }}
           >
             <div>Fortmatic</div>
@@ -121,7 +121,7 @@ function WalletModal(props) {
                 height={"24px"}
               />
             </div>
-          </button>
+          </button> */}
           <button
             className={styles.wallet}
             onClick={async () => {
