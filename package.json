@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@apollo/client": "^3.5.8",
     "@ethersproject/providers": "5.5.1",
     "@ethersproject/units": "^5.5.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
@@ -19,6 +20,7 @@
     "@web3-react/walletconnect-connector": "6.2.8",
     "dotenv": "^16.0.0",
     "ethers": "5.5.2",
+    "graphql": "^16.3.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-jazzicon": "^0.1.3",
