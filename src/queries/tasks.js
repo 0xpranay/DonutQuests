@@ -64,3 +64,7 @@ const tasks = [
   },
 ];
 export default tasks;
+
+function getTasks(address, taskId) {
+  return tasks;
+}

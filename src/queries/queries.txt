@@ -1,0 +1,24 @@
+// Honeyswap DONUT-XDAI Backend
+// Insert the start and end timestamp for the round
+
+{
+  swaps(where : {pair : "0x077240a400b1740c8cd6f73dea37da1f703d8c00", amount0Out_gte : 100, timestamp_gt :start, timestamp_lt : end}, orderBy : timestamp, orderDirection : desc, first : 1000)
+  {
+    to
+  }
+}
+
+// Honeyswap DONUT-XDAI Frontend
+// Insert the user address and start, end timestamps for the round
+// If previousRound >= 1, proceed to claim. If currentRound >= 1, ask to wait. Else say pending
+
+{
+  previousRound : swaps(where : {pair : "0x077240a400b1740c8cd6f73dea37da1f703d8c00", timestamp_gt : genesis, timestamp_lt :start ,amount0Out_gte : 100, to : "${userAddress}"}, orderBy : timestamp, orderDirection : desc, first : 1000)
+  {
+    id
+  }
+  currentRound : swaps(where : {pair : "0x077240a400b1740c8cd6f73dea37da1f703d8c00", timestamp_gt : start,amount0Out_gte : 100, to : "${userAddress}"}, orderBy : timestamp, orderDirection : desc, first : 1000)
+  {
+    id
+  }
+}
