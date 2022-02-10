@@ -7,7 +7,7 @@
 // Repeat this step with first and skip till you get all the users.
 // "to" field here is the address of user.
 {
-  swaps(where : {pair : "0x077240a400b1740c8cd6f73dea37da1f703d8c00", amount0Out_gte : 100, timestamp_gte :start, timestamp_lt : end}, orderBy : timestamp, orderDirection : desc, first : 1000)
+  backend : swaps(where : {pair : "0x077240a400b1740c8cd6f73dea37da1f703d8c00", amount0Out_gte : 100, timestamp_gte :start, timestamp_lt : end}, orderBy : timestamp, orderDirection : desc, first : 1000)
   {
     to
   }
@@ -19,7 +19,7 @@
 // Check eligible JSON. Else check if any swap exists and ask to wait.
 // Note there's no "to" here. We just query "id" just to know the count.
 {
-  currentRound : swaps(where : {pair : "0x077240a400b1740c8cd6f73dea37da1f703d8c00", timestamp_gte : genesis,amount0Out_gte : 100, to : "${userAddress}"}, orderBy : timestamp, orderDirection : desc, first : 10)
+  frontend : swaps(where : {pair : "0x077240a400b1740c8cd6f73dea37da1f703d8c00", timestamp_gte : genesis,amount0Out_gte : 100, to : "${userAddress}"}, orderBy : timestamp, orderDirection : desc, first : 10)
   {
     id
   }
@@ -32,7 +32,7 @@
 // Frontend, replace the user address. Check eligible JSON, if not there check this query andd ask to wait.
 {
 
-  currentRound : liquidityPositions(where : {user : "${userAddress}", pair : "0x077240a400b1740c8cd6f73dea37da1f703d8c00", liquidityTokenBalance_gt : ${decideAmount}})
+  frontend : liquidityPositions(where : {user : "${userAddress}", pair : "0x077240a400b1740c8cd6f73dea37da1f703d8c00", liquidityTokenBalance_gt : ${decideAmount}})
   {
     liquidityTokenBalance
   }
@@ -57,7 +57,7 @@
 
 // Backend. The reserve is GNO. Change maybe if needed. Perform the query and use the snapshot.
 {
-    backendGNOHolders : userReserves(where : {reserve : "0x9c58bacc331c9aa871afd802db6379a98e80cedb0xa91b9095efa6c0568467562032202108e49c9ef8", currentATokenBalance_gt : ${decideAmount}}, orderBy : currentATokenBalance, orderDirection : asc, first :1000)
+    backend : userReserves(where : {reserve : "0x9c58bacc331c9aa871afd802db6379a98e80cedb0xa91b9095efa6c0568467562032202108e49c9ef8", currentATokenBalance_gt : ${decideAmount}}, orderBy : currentATokenBalance, orderDirection : asc, first :1000)
   { 
     user
     {
@@ -68,7 +68,7 @@
 
 // Frontend. Check the eligible JSON. If no, Replace the userAddress and check if they hold now and ask them to wait.
 {
-  userReserves(where: { user: "${userAddress}", reserve :"0x9c58bacc331c9aa871afd802db6379a98e80cedb0xa91b9095efa6c0568467562032202108e49c9ef8", currentATokenBalance_gt : ${decideAmount}}) {
+  frontend : userReserves(where: { user: "${userAddress}", reserve :"0x9c58bacc331c9aa871afd802db6379a98e80cedb0xa91b9095efa6c0568467562032202108e49c9ef8", currentATokenBalance_gt : ${decideAmount}}) {
     currentATokenBalance
     reserve{
       symbol
@@ -80,7 +80,7 @@
 
 // Backend. Decide the amount and run the query, then take the snapshot.
 {
-    backendGNOBorrows : userReserves(where : {reserve : "0x9c58bacc331c9aa871afd802db6379a98e80cedb0xa91b9095efa6c0568467562032202108e49c9ef8", currentTotalDebt_gte : ${decideAmount}}, orderBy : currentTotalDebt, orderDirection : asc)
+    backend : userReserves(where : {reserve : "0x9c58bacc331c9aa871afd802db6379a98e80cedb0xa91b9095efa6c0568467562032202108e49c9ef8", currentTotalDebt_gt : ${decideAmount}}, orderBy : currentTotalDebt, orderDirection : asc)
   { 
     currentTotalDebt
     user
@@ -91,9 +91,9 @@
 }
 // Frontend. Check in eligible JSON if not present, make this query and ask to wait.
 {
-    frontendGNOBorrow : user(id : "${userAddress}")
+    frontend : user(id : "${userAddress}")
   {
-      reserves(where : {reserve : "0x9c58bacc331c9aa871afd802db6379a98e80cedb0xa91b9095efa6c0568467562032202108e49c9ef8", currentTotalDebt_gte : ${decideAmount}})
+      reserves(where : {reserve : "0x9c58bacc331c9aa871afd802db6379a98e80cedb0xa91b9095efa6c0568467562032202108e49c9ef8", currentTotalDebt_gte : 0})
       {
         currentTotalDebt
       }
