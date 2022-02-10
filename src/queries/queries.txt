@@ -1,24 +1,101 @@
+------------------------------------------------------------------------------------------------ HONEYSWAP DONUT-XDAI SWAP----------------------------------------------------------------------------------------------------------------
+
+
 // Honeyswap DONUT-XDAI Backend
 // Insert the start and end timestamp for the round
-
+// Timestamps are [startTimestamp, endTimestamp)
+// Repeat this step with first and skip till you get all the users.
+// "to" field here is the address of user.
 {
-  swaps(where : {pair : "0x077240a400b1740c8cd6f73dea37da1f703d8c00", amount0Out_gte : 100, timestamp_gt :start, timestamp_lt : end}, orderBy : timestamp, orderDirection : desc, first : 1000)
+  swaps(where : {pair : "0x077240a400b1740c8cd6f73dea37da1f703d8c00", amount0Out_gte : 100, timestamp_gte :start, timestamp_lt : end}, orderBy : timestamp, orderDirection : desc, first : 1000)
   {
     to
   }
 }
 
-// Honeyswap DONUT-XDAI Frontend
-// Insert the user address and start, end timestamps for the round
-// If previousRound >= 1, proceed to claim. If currentRound >= 1, ask to wait. Else say pending
 
+
+// Honeyswap DONUT-XDAI Frontend
+// Check eligible JSON. Else check if any swap exists and ask to wait.
+// Note there's no "to" here. We just query "id" just to know the count.
 {
-  previousRound : swaps(where : {pair : "0x077240a400b1740c8cd6f73dea37da1f703d8c00", timestamp_gt : genesis, timestamp_lt :start ,amount0Out_gte : 100, to : "${userAddress}"}, orderBy : timestamp, orderDirection : desc, first : 1000)
+  currentRound : swaps(where : {pair : "0x077240a400b1740c8cd6f73dea37da1f703d8c00", timestamp_gte : genesis,amount0Out_gte : 100, to : "${userAddress}"}, orderBy : timestamp, orderDirection : desc, first : 10)
   {
     id
   }
-  currentRound : swaps(where : {pair : "0x077240a400b1740c8cd6f73dea37da1f703d8c00", timestamp_gt : start,amount0Out_gte : 100, to : "${userAddress}"}, orderBy : timestamp, orderDirection : desc, first : 1000)
+}
+
+
+
+------------------------------------------------------------------------------------------------ HONEYSWAP DONUT-XDAI LIQUIDITY ----------------------------------------------------------------------------------------------------
+
+// Frontend, replace the user address. Check eligible JSON, if not there check this query andd ask to wait.
+{
+
+  currentRound : liquidityPositions(where : {user : "${userAddress}", pair : "0x077240a400b1740c8cd6f73dea37da1f703d8c00", liquidityTokenBalance_gt : ${decideAmount}})
   {
-    id
+    liquidityTokenBalance
+  }
+ 
+}
+
+
+
+// Backend, just execute this query and use the result as a snapshot.
+{
+  backend : liquidityPositions(where : {pair : "0x077240a400b1740c8cd6f73dea37da1f703d8c00", liquidityTokenBalance_gt : ${decideAmount}}, first : 1000, orderBy : liquidityTokenBalance, orderDirection : desc)
+  {
+    user
+    {
+      id
+    }
+  }
+}
+
+
+------------------------------------------------------------------------------------------------ AGAVE FINANCE GNO DEPOSIT----------------------------------------------------------------------------------------------------
+
+// Backend. The reserve is GNO. Change maybe if needed. Perform the query and use the snapshot.
+{
+    backendGNOHolders : userReserves(where : {reserve : "0x9c58bacc331c9aa871afd802db6379a98e80cedb0xa91b9095efa6c0568467562032202108e49c9ef8", currentATokenBalance_gt : ${decideAmount}}, orderBy : currentATokenBalance, orderDirection : asc, first :1000)
+  { 
+    user
+    {
+      id
+    }
+  }
+}
+
+// Frontend. Check the eligible JSON. If no, Replace the userAddress and check if they hold now and ask them to wait.
+{
+  userReserves(where: { user: "${userAddress}", reserve :"0x9c58bacc331c9aa871afd802db6379a98e80cedb0xa91b9095efa6c0568467562032202108e49c9ef8", currentATokenBalance_gt : ${decideAmount}}) {
+    currentATokenBalance
+    reserve{
+      symbol
+    }
+  }
+}
+
+------------------------------------------------------------------------------------------------ AGAVE FINANCE GNO BORROW----------------------------------------------------------------------------------------------------
+
+// Backend. Decide the amount and run the query, then take the snapshot.
+{
+    backendGNOBorrows : userReserves(where : {reserve : "0x9c58bacc331c9aa871afd802db6379a98e80cedb0xa91b9095efa6c0568467562032202108e49c9ef8", currentTotalDebt_gte : ${decideAmount}}, orderBy : currentTotalDebt, orderDirection : asc)
+  { 
+    currentTotalDebt
+    user
+    {
+      id
+    }
+  }
+}
+// Frontend. Check in eligible JSON if not present, make this query and ask to wait.
+{
+    frontendGNOBorrow : user(id : "${userAddress}")
+  {
+      reserves(where : {reserve : "0x9c58bacc331c9aa871afd802db6379a98e80cedb0xa91b9095efa6c0568467562032202108e49c9ef8", currentTotalDebt_gte : ${decideAmount}})
+      {
+        currentTotalDebt
+      }
   }
 }
