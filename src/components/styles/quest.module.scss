@@ -54,7 +54,7 @@
     justify-content: flex-start;
     align-items: flex-start;
     text-align: left;
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: bolder;
     margin-bottom: 1rem;
     color: #282e39;
@@ -88,6 +88,7 @@
       width: 30%;
       font-weight: bolder;
       font-size: 1rem;
+      text-align: center;
       &:hover {
         cursor: pointer;
         // background-color: rgba($color: rgb(0, 255, 195), $alpha: 0.7);

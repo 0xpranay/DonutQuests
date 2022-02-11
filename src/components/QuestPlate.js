@@ -8,8 +8,10 @@ import {
   ApolloProvider,
 } from "@apollo/client";
 import tasks from "../queries/tasks";
+import { useWeb3React } from "@web3-react/core";
 
 export default function QuestPlate() {
+  const { active } = useWeb3React();
   return (
     <div className={styles.questPlate}>
       {/* <ApolloProvider>
@@ -36,26 +38,30 @@ export default function QuestPlate() {
       <ApolloProvider>
         <Quest></Quest>
       </ApolloProvider> */}
-      {tasks.map(function (task) {
-        const httpLink = createHttpLink({
-          uri: task.uri,
-        });
-        const client = new ApolloClient({
-          link: httpLink,
-          cache: new InMemoryCache(),
-        });
-        return (
-          <ApolloProvider client={client}>
-            <Quest
-              key={task.id}
-              title={task.title}
-              id={task.id}
-              wait={task.wait}
-              claim={task.claim}
-            ></Quest>
-          </ApolloProvider>
-        );
-      })}
+      {active ? (
+        tasks.map(function (task, index) {
+          const httpLink = createHttpLink({
+            uri: task.uri,
+          });
+          const client = new ApolloClient({
+            link: httpLink,
+            cache: new InMemoryCache(),
+            connectToDevTools: true,
+          });
+          return (
+            <ApolloProvider client={client} key={index}>
+              <Quest
+                key={index}
+                title={task.title}
+                id={task.id}
+                eligible={task.eligible}
+              ></Quest>
+            </ApolloProvider>
+          );
+        })
+      ) : (
+        <div>Connect wallet first</div>
+      )}
     </div>
   );
 }
