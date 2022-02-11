@@ -95,6 +95,21 @@
         background-color: rgba($color: orangered, $alpha: 0.5);
       }
     }
+    .claimDisabled {
+      border: 1px solid #394150;
+      // background-color: rgba($color: rgb(0, 255, 195), $alpha: 0.3);
+      background-color: rgba($color: orangered, $alpha: 0.2);
+      color: black;
+      padding: 1rem;
+      border-radius: 10px;
+      width: 32%;
+      font-weight: bolder;
+      font-size: 1rem;
+      text-align: center;
+      &:hover {
+        cursor: not-allowed;
+      }
+    }
   }
 }
 

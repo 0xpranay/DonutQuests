@@ -4,6 +4,25 @@
   gap: 1rem;
   padding: 1rem;
 }
+.textCard {
+  background: rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  border-radius: 30px;
+  padding: 3rem;
+  border: 1px solid black;
+  font-weight: bold;
+  .text {
+    color: #394150;
+    color: rgb(236, 105, 24);
+    font-weight: bolder;
+  }
+}
 
 // MEDIA QUERIES FOLLOW
 

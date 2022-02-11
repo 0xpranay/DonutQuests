@@ -2,7 +2,7 @@ import { gql } from "@apollo/client";
 const tasks = [
   {
     id: 0,
-    title: "Swap atleast 100 DONUTS on Honeyswap",
+    title: "Buy atleast 300 DONUTS on Honeyswap",
     uri: "https://api.thegraph.com/subgraphs/name/1hive/honeyswap-v2",
     eligible: gql`
       query ($decideAmount: BigInt, $userAddress: ID!) {
@@ -21,6 +21,7 @@ const tasks = [
         }
       }
     `,
+    img: "./images/honeyswap.svg",
   },
   {
     id: 1,
@@ -39,6 +40,7 @@ const tasks = [
         }
       }
     `,
+    img: "./images/honeyswap.svg",
   },
   {
     id: 2,
@@ -60,6 +62,7 @@ const tasks = [
         }
       }
     `,
+    img: "./images/agave.webp",
   },
   {
     id: 3,
@@ -79,6 +82,7 @@ const tasks = [
         }
       }
     `,
+    img: "./images/agave.webp",
   },
 ];
 export default tasks;

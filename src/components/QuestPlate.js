@@ -13,55 +13,38 @@ import { useWeb3React } from "@web3-react/core";
 export default function QuestPlate() {
   const { active } = useWeb3React();
   return (
-    <div className={styles.questPlate}>
-      {/* <ApolloProvider>
-        <Quest></Quest>
-      </ApolloProvider>
-      <ApolloProvider>
-        <Quest></Quest>
-      </ApolloProvider>
-      <ApolloProvider>
-        <Quest></Quest>
-      </ApolloProvider>
-      <ApolloProvider>
-        <Quest></Quest>
-      </ApolloProvider>
-      <ApolloProvider>
-        <Quest></Quest>
-      </ApolloProvider>
-      <ApolloProvider>
-        <Quest></Quest>
-      </ApolloProvider>
-      <ApolloProvider>
-        <Quest></Quest>
-      </ApolloProvider>
-      <ApolloProvider>
-        <Quest></Quest>
-      </ApolloProvider> */}
+    <>
       {active ? (
-        tasks.map(function (task, index) {
-          const httpLink = createHttpLink({
-            uri: task.uri,
-          });
-          const client = new ApolloClient({
-            link: httpLink,
-            cache: new InMemoryCache(),
-            connectToDevTools: true,
-          });
-          return (
-            <ApolloProvider client={client} key={index}>
-              <Quest
-                key={index}
-                title={task.title}
-                id={task.id}
-                eligible={task.eligible}
-              ></Quest>
-            </ApolloProvider>
-          );
-        })
+        <div className={styles.questPlate}>
+          {tasks.map(function (task, index) {
+            const httpLink = createHttpLink({
+              uri: task.uri,
+            });
+            const client = new ApolloClient({
+              link: httpLink,
+              cache: new InMemoryCache(),
+              connectToDevTools: true,
+            });
+            return (
+              <ApolloProvider client={client} key={index}>
+                <Quest
+                  key={index}
+                  title={task.title}
+                  id={task.id}
+                  eligible={task.eligible}
+                  img={task.img}
+                ></Quest>
+              </ApolloProvider>
+            );
+          })}
+        </div>
       ) : (
-        <div>Connect wallet first</div>
+        <div style={{ padding: "1rem" }}>
+          <div className={styles.textCard}>
+            <p className={styles.text}>Connect your wallet to view quests</p>
+          </div>
+        </div>
       )}
-    </div>
+    </>
   );
 }

@@ -1,11 +1,19 @@
 /* global BigInt */
 import React, { useState } from "react";
 import styles from "./styles/quest.module.scss";
-import { useQuery, gql } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { useWeb3React } from "@web3-react/core";
+import { css } from "@emotion/react";
+import ClipLoader from "react-spinners/ClipLoader";
+import { CircleLoader } from "react-spinners";
 BigInt.prototype.toJSON = function () {
   return this.toString();
 };
+const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+`;
 export default function Quest(props) {
   const [status, setStatus] = useState(false);
   let eligiblityCheckCompleted = false;
@@ -58,8 +66,7 @@ export default function Quest(props) {
     onCompleted: checkEligibility,
   });
   function printQuery() {
-    console.log("Query for " + props.title + " params are");
-    console.log(params);
+    console.log("Query for " + props.title);
     if (error) {
       console.log("Printing Error, ");
       console.log(error);
@@ -67,12 +74,19 @@ export default function Quest(props) {
     }
     console.log(data);
   }
+
   return (
     <div className={styles.task}>
       {!loading ? printQuery() : ""}
       <div className={styles.taskHeader}>
         <div className={styles.logo}>
-          <svg
+          <img
+            src={props.img}
+            alt="Platform Logo"
+            width={"80px"}
+            height={"80px"}
+          />
+          {/* <svg
             id="logo-37"
             width="42"
             height="38"
@@ -126,7 +140,7 @@ export default function Quest(props) {
               className="ccustom"
               fill="#25CAAC"
             ></path>{" "}
-          </svg>
+          </svg> */}
         </div>
         <div className={styles.infoPanel}>
           <div className={styles.round}>Round 1</div>
@@ -154,9 +168,13 @@ export default function Quest(props) {
           onClick={() => {
             alert("Task Clicked");
           }}
-          className={styles.claim}
+          className={status ? styles.claim : styles.claimDisabled}
         >
-          {status ? "Eligible" : "Pending"}
+          {loading ? (
+            <ClipLoader loading={loading} css={override} size={30} />
+          ) : (
+            <>{status ? "Eligible" : "Pending"}</>
+          )}
         </button>
       </div>
     </div>
