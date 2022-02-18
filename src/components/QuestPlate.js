@@ -33,6 +33,7 @@ export default function QuestPlate() {
                   id={task.id}
                   eligible={task.eligible}
                   img={task.img}
+                  url={task.url}
                 ></Quest>
               </ApolloProvider>
             );

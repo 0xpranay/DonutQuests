@@ -1,45 +1,36 @@
 import React, { useState } from "react";
 import styles from "./styles/connectWallet.module.scss";
 import { WalletConnectConnector } from "@web3-react/walletconnect-connector";
-import { FortmaticConnector } from "@web3-react/fortmatic-connector";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { PortisConnector } from "@web3-react/portis-connector";
-import {
-  InjectedConnector,
-  NoEthereumProviderError,
-} from "@web3-react/injected-connector";
-import Jazzicon, { jsNumberForAddress } from "react-jazzicon";
+import { InjectedConnector } from "@web3-react/injected-connector";
 import { useWeb3React } from "@web3-react/core";
 import ReactModal from "react-modal";
-const WalletDetails = () => {
-  const { account, deactivate } = useWeb3React();
-  const shorthand =
-    account.substr(0, 6) + "..." + account.substr(account.length - 4);
-  return (
-    <div className={styles.walletDetails}>
-      <div className={styles.addressBox}>
-        <div className={styles.address}>{shorthand}</div>
-        <Jazzicon diameter={18} seed={jsNumberForAddress(account)} />
-      </div>
-      <div>
-        <button onClick={deactivate} className={styles.disconnect}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            height="24px"
-            viewBox="0 0 24 24"
-            width="24px"
-            fill="#000000"
-          >
-            <path d="M0 0h24v24H0V0z" fill="none" />
-            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z" />
-          </svg>
-        </button>
-      </div>
-    </div>
-  );
-};
+
+function activateInjectedProvider(providerName) {
+  const { ethereum } = window;
+
+  if (!ethereum?.providers) {
+    return undefined;
+  }
+
+  let provider;
+  switch (providerName) {
+    case "CoinBase":
+      provider = ethereum.providers.find(
+        ({ isCoinbaseWallet }) => isCoinbaseWallet
+      );
+      break;
+    case "MetaMask":
+      provider = ethereum.providers.find(({ isMetaMask }) => isMetaMask);
+      break;
+  }
+
+  if (provider) {
+    ethereum.setSelectedProvider(provider);
+  }
+}
 function WalletModal(props) {
-  const { account, active, activate, deactivate, chainId } = useWeb3React();
+  const { activate, chainId } = useWeb3React();
   ReactModal.setAppElement("#root");
   return (
     <ReactModal
@@ -70,6 +61,7 @@ function WalletModal(props) {
           <button
             className={styles.wallet}
             onClick={async () => {
+              activateInjectedProvider("MetaMask");
               await activate(
                 new InjectedConnector({
                   supportedChainIds: [1337],
@@ -100,7 +92,7 @@ function WalletModal(props) {
                   chainId: 100,
                 })
               );
-              if (chainId != 100) alert("Please change to XDAI Chain");
+              // if (chainId != 100) alert("Please change to XDAI Chain");
               props.toggleModal();
             }}
           >
@@ -114,7 +106,17 @@ function WalletModal(props) {
               />
             </div>
           </button>
-          <button className={styles.wallet}>
+          <button
+            className={styles.wallet}
+            onClick={async () => {
+              activateInjectedProvider("CoinBase");
+              await activate(
+                new InjectedConnector({
+                  supportedChainIds: [100],
+                })
+              );
+            }}
+          >
             <div>Coinbase Wallet</div>
             <div>
               <img
@@ -175,29 +177,12 @@ function WalletModal(props) {
   );
 }
 export default function ConnectWallet() {
-  const { account, active, activate, deactivate, library } = useWeb3React();
+  const { account, active, deactivate, library } = useWeb3React();
   const [modal, setModal] = useState(false);
   function toggleModal() {
     if (modal) document.body.style.overflow = "visible";
     if (!modal) document.body.style.overflow = "hidden";
     setModal((modal) => !modal);
-  }
-  async function sign() {
-    let input = prompt("Enter Message");
-    const message = await library.getSigner(account).signMessage(input);
-    alert(message);
-  }
-
-  async function send() {
-    await library.getSigner(account).sendTransaction({
-      nonce: account.nonce, // 0 in decimal
-      gasLimit: "0x5208", // 21000 in decimal
-      gasPrice: null, // 1000000000 in decimal
-      to: "0x17A98d2b11Dfb784e63337d2170e21cf5DD04631",
-      value: "0x9184E72A000", // 100000000000000000 in decimal
-      data: "0x", // “empty” value in decimal
-      // "chainId": 4 // Ethereum network id
-    });
   }
   return (
     <>

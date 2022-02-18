@@ -17,12 +17,17 @@ export default function Footer() {
             <a
               href="https://www.reddit.com/r/ethtrader/comments/nsxjw7/daily_discussion/"
               target="_blank"
+              rel="noreferrer"
             >
               Daily Thread
             </a>
           </li>
           <li>
-            <a href="https://donut-dashboard.com/#/register" target="_blank">
+            <a
+              href="https://donut-dashboard.com/#/register"
+              target="_blank"
+              rel="noreferrer"
+            >
               Register
             </a>
           </li>
@@ -30,6 +35,7 @@ export default function Footer() {
             <a
               href="https://www.reddit.com/r/ethtrader/comments/nf1a5i/how_to_claim_donuts_faq/"
               target="_blank"
+              rel="noreferrer"
             >
               Claim
             </a>
@@ -38,6 +44,7 @@ export default function Footer() {
             <a
               href="https://www.reddit.com/r/ethtrader/wiki/donuts/governance_polls_to_date/"
               target="_blank"
+              rel="noreferrer"
             >
               Polls
             </a>
@@ -46,12 +53,20 @@ export default function Footer() {
         <div className={styles.links}>
           <li className={styles.headlist}>CONTRIBUTE</li>
           <li>
-            <a href="https://www.reddit.com/r/ethtrader/submit" target="_blank">
+            <a
+              href="https://www.reddit.com/r/ethtrader/submit"
+              target="_blank"
+              rel="noreferrer"
+            >
               Post
             </a>
           </li>
           <li>
-            <a href="https://www.donut.finance/" target="_blank">
+            <a
+              href="https://www.donut.finance/"
+              target="_blank"
+              rel="noreferrer"
+            >
               Tip
             </a>
           </li>
@@ -59,6 +74,7 @@ export default function Footer() {
             <a
               href="https://www.reddit.com/r/ethtrader/wiki/donuts/donut_initiatives_to_date"
               target="_blank"
+              rel="noreferrer"
             >
               Initiatives
             </a>
@@ -67,6 +83,7 @@ export default function Footer() {
             <a
               href="https://www.reddit.com/r/ethtrader/comments/ogugf9/governance_discussion/"
               target="_blank"
+              rel="noreferrer"
             >
               Governance
             </a>
@@ -78,12 +95,17 @@ export default function Footer() {
             <a
               href="https://app.uniswap.org/#/swap?theme=dark&use=v3&outputCurrency=0xc0f9bd5fa5698b6505f643900ffa515ea5df54a9"
               target="_blank"
+              rel="noreferrer"
             >
               Buy on Uniswap
             </a>
           </li>
           <li>
-            <a href="https://app.honeyswap.org/#/swap" target="_blank">
+            <a
+              href="https://app.honeyswap.org/#/swap"
+              target="_blank"
+              rel="noreferrer"
+            >
               Buy on Honeyswap
             </a>
           </li>
@@ -91,6 +113,7 @@ export default function Footer() {
             <a
               href="https://cloudflare-ipfs.com/ipfs/QmajDWDWim8r6muJP1DgFysEAiWVYFf5spw9itY5MgX24W"
               target="_blank"
+              rel="noreferrer"
             >
               Stake on Mainnet
             </a>
@@ -99,6 +122,7 @@ export default function Footer() {
             <a
               href="https://ipfs.io/ipfs/QmWGrKnCkcUX8jPGfamQ7qA3pvbDsuXmyVE8BAy6NrNBSn"
               target="_blank"
+              rel="noreferrer"
             >
               Stake on XDAI
             </a>
@@ -110,6 +134,7 @@ export default function Footer() {
             <a
               href="https://www.reddit.com/r/ethtrader/wiki/donuts"
               target="_blank"
+              rel="noreferrer"
             >
               Donuts
             </a>
@@ -118,6 +143,7 @@ export default function Footer() {
             <a
               href="https://www.reddit.com/r/ethtrader/wiki/governance"
               target="_blank"
+              rel="noreferrer"
             >
               Governance Guide
             </a>
@@ -126,6 +152,7 @@ export default function Footer() {
             <a
               href="https://www.reddit.com/r/ethtrader/comments/an5577/a_communityled_initiative_to_decentralize_donuts/"
               target="_blank"
+              rel="noreferrer"
             >
               Decentralisation
             </a>
@@ -134,6 +161,7 @@ export default function Footer() {
             <a
               href="https://www.reddit.com/r/ethtrader/wiki/policy"
               target="_blank"
+              rel="noreferrer"
             >
               Policy
             </a>

@@ -22,6 +22,7 @@ const tasks = [
       }
     `,
     img: "./images/honeyswap.svg",
+    url: "https://app.honeyswap.org/#/swap",
   },
   {
     id: 1,
@@ -41,6 +42,7 @@ const tasks = [
       }
     `,
     img: "./images/honeyswap.svg",
+    url: "https://app.honeyswap.org/#/swap",
   },
   {
     id: 2,
@@ -63,6 +65,7 @@ const tasks = [
       }
     `,
     img: "./images/agave.webp",
+    url: "https://app.agave.finance/#/",
   },
   {
     id: 3,
@@ -83,10 +86,7 @@ const tasks = [
       }
     `,
     img: "./images/agave.webp",
+    url: "https://app.agave.finance/#/",
   },
 ];
 export default tasks;
-
-function getTask(address, taskId) {
-  return tasks;
-}

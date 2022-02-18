@@ -1,11 +1,10 @@
 /* global BigInt */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./styles/quest.module.scss";
 import { useQuery } from "@apollo/client";
 import { useWeb3React } from "@web3-react/core";
 import { css } from "@emotion/react";
 import ClipLoader from "react-spinners/ClipLoader";
-import { CircleLoader } from "react-spinners";
 import { ethers } from "ethers";
 import MerkleTree from "merkletreejs";
 import keccak256 from "keccak256";
@@ -21,15 +20,25 @@ const override = css`
 export default function Quest(props) {
   const [status, setStatus] = useState(false);
   const [statusText, setStatusText] = useState("Pending");
+  const [round, setRound] = useState("1");
   const { account, library } = useWeb3React();
   let eligiblityCheckCompleted = false;
   const signer = library.getSigner();
-  const contractAddress = "0xB7f8BC63BbcaD18155201308C8f3540b07f84F5e";
+  const contractAddress = "0x809d550fca64d94Bd9F66E60752A544199cfAC3D";
   const rewardsContract = new ethers.Contract(
     contractAddress,
     QuestRewards.abi,
     signer
   );
+  useEffect(() => {
+    async function fetchRound() {
+      const roundNum = await rewardsContract.getRound(props.id);
+      setRound(roundNum.toString());
+      console.log(`Task ${props.id} round is ${roundNum.toString()}`);
+    }
+    fetchRound();
+  }, [props.id, rewardsContract]);
+
   let amount = BigInt(0);
   switch (props.id) {
     case 0:
@@ -44,6 +53,9 @@ export default function Quest(props) {
       break;
     case 3:
       amount = BigInt(0.01 * 10 ** 18);
+      break;
+    default:
+      console.log("Invalid task id. Please report this error");
       break;
   }
   const params = {
@@ -97,6 +109,9 @@ export default function Quest(props) {
           setStatusText("Eligible");
         }
         console.log(props.id, data.frontend.reserves[0]);
+        break;
+      default:
+        console.log("Invalid task id. Please report this error");
         break;
     }
     eligiblityCheckCompleted = true;
@@ -152,7 +167,7 @@ export default function Quest(props) {
           />
         </div>
         <div className={styles.infoPanel}>
-          <div className={styles.round}>Round 1</div>
+          <div className={styles.round}>Round {round}</div>
           <div className={styles.reward}>
             100
             <img src="./images/donut.png" alt="" />
@@ -163,7 +178,7 @@ export default function Quest(props) {
       <div className={styles.taskFooter}>
         <button
           onClick={() => {
-            alert("Clicked details");
+            window.open(props.url, "_blank");
           }}
           className={styles.details}
         >
