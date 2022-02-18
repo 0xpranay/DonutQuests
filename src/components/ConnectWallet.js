@@ -72,7 +72,7 @@ function WalletModal(props) {
             onClick={async () => {
               await activate(
                 new InjectedConnector({
-                  supportedChainIds: [100],
+                  supportedChainIds: [1337],
                 })
               );
               props.toggleModal();
