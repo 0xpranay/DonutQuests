@@ -2,7 +2,7 @@
 
 Donut quests is an incentives platform where users get exposure to various DeFi protocols, complete tasks and earn donuts, the ERC20 token of [r/ethtrader](https://www.reddit.com/r/ethtrader). 
 
-## Generating the snapshot :
+## Generating the Snapshot :
 
 Head over to the [Quest compute repo](https://github.com/0xpranay/QuestCompute). Then run the commands explained below.
 
