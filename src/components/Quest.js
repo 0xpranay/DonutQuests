@@ -64,7 +64,7 @@ export default function Quest(props) {
   };
   async function checkEligibility() {
     // Call after data is reached.
-    const alreadyClaimed = await rewardsContract.claimed(0, account);
+    const alreadyClaimed = await rewardsContract.claimed(props.id, account);
     if (alreadyClaimed == true) {
       setStatus(false);
       setStatusText("Claimed");
@@ -87,28 +87,24 @@ export default function Quest(props) {
           setStatus(true);
           setStatusText("Eligible");
         }
-        console.log(props.id, data.frontend[0]);
         break;
       case 1:
         if (data.frontend.length >= 1) {
           setStatus(true);
           setStatusText("Eligible");
         }
-        console.log(props.id, data.frontend[0]);
         break;
       case 2:
         if (data.frontend.length >= 1) {
           setStatus(true);
           setStatusText("Eligible");
         }
-        console.log(props.id, data.frontend[0]);
         break;
       case 3:
         if (data.frontend.reserves.length >= 1) {
           setStatus(true);
           setStatusText("Eligible");
         }
-        console.log(props.id, data.frontend.reserves[0]);
         break;
       default:
         console.log("Invalid task id. Please report this error");
