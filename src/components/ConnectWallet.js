@@ -64,7 +64,7 @@ function WalletModal(props) {
               activateInjectedProvider("MetaMask");
               await activate(
                 new InjectedConnector({
-                  supportedChainIds: [1337],
+                  supportedChainIds: [100],
                 })
               );
               props.toggleModal();
