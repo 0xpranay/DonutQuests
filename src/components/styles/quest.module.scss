@@ -81,7 +81,7 @@
     .claim {
       border: 1px solid #394150;
       // background-color: rgba($color: rgb(0, 255, 195), $alpha: 0.3);
-      background-color: rgba($color: orangered, $alpha: 0.3);
+      background-color: rgba($color: cyan, $alpha: 0.4);
       color: black;
       padding: 1rem;
       border-radius: 10px;
@@ -92,7 +92,7 @@
       &:hover {
         cursor: pointer;
         // background-color: rgba($color: rgb(0, 255, 195), $alpha: 0.7);
-        background-color: rgba($color: orangered, $alpha: 0.5);
+        background-color: rgba($color: cyan, $alpha: 0.7);
       }
     }
     .claimDisabled {
