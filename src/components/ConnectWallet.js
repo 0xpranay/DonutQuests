@@ -115,6 +115,7 @@ function WalletModal(props) {
                   supportedChainIds: [100],
                 })
               );
+              props.toggleModal();
             }}
           >
             <div>Coinbase Wallet</div>
