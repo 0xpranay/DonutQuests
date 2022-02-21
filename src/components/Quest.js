@@ -24,7 +24,7 @@ export default function Quest(props) {
   const { account, library } = useWeb3React();
   let eligiblityCheckCompleted = false;
   const signer = library.getSigner();
-  const contractAddress = "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512";
+  const contractAddress = "0x69173859a8B2273FE9b8489823B489ac7915196B";
   const rewardsContract = new ethers.Contract(
     contractAddress,
     QuestRewards.abi,
