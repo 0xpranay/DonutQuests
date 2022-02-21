@@ -1,6 +1,6 @@
-#                     Donut Quests
+# Donut Quests
 
-Donut quests is an incentives platform where users get exposure to various DeFi protocols, complete tasks and earn donuts, the ERC20 token of [r/ethtrader](https://www.reddit.com/r/ethtrader). 
+Donut quests is an incentives platform where users get exposure to various DeFi protocols, complete tasks and earn donuts, the ERC20 token of [r/ethtrader](https://www.reddit.com/r/ethtrader).
 
 ## Generating the snapshot :
 
@@ -8,13 +8,13 @@ Head over to the [Quest compute repo](https://github.com/0xpranay/QuestCompute).
 
 ### `node main`
 
-Runs the snapshot scripts which fetch eligible users' data from [TheGraph](https://thegraph.com/en/) subgraphs. This script generates list of eligible users and saves them as `taskNum.JSON`. So for task with `id` as `0`, the users list will. be generated in the JSON **`0.json`** in the root directory. 
+Runs the snapshot scripts which fetch eligible users' data from [TheGraph](https://thegraph.com/en/) subgraphs. This script generates list of eligible users and saves them as `taskNum.JSON`. So for task with `id` as `0`, the users list will. be generated in the JSON **`0.json`** in the root directory.
 
 ### `node printRoot`
 
 This command runs the merkle root generation script. The new merkle roots for each task will be generated based on the JSONs fetched previously using `node main` . The merkle roots will be saved to the file **`roots.json`**. The roots will also be printed to the console.
 
-## Updating the MerkleRoots : 
+## Updating the MerkleRoots :
 
 The merkle roots can only be updated by the owner of the contract. During testing and initial deployment, the owner is a single entity while after the testing phase, the DAO's multsig will become the owner.
 

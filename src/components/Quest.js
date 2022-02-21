@@ -24,7 +24,7 @@ export default function Quest(props) {
   const { account, library } = useWeb3React();
   let eligiblityCheckCompleted = false;
   const signer = library.getSigner();
-  const contractAddress = "0x809d550fca64d94Bd9F66E60752A544199cfAC3D";
+  const contractAddress = "0x69173859a8B2273FE9b8489823B489ac7915196B";
   const rewardsContract = new ethers.Contract(
     contractAddress,
     QuestRewards.abi,
@@ -101,7 +101,10 @@ export default function Quest(props) {
         }
         break;
       case 3:
-        if (data.frontend.reserves.length >= 1) {
+        if (
+          data.frontend.reserves != undefined &&
+          data.frontend.reserves.length >= 1
+        ) {
           setStatus(true);
           setStatusText("Eligible");
         }
@@ -181,7 +184,7 @@ export default function Quest(props) {
           Details
         </button>
         <button
-          disabled={!status}
+          disabled={statusText != "Claim"}
           onClick={handleTask}
           className={status ? styles.claim : styles.claimDisabled}
         >

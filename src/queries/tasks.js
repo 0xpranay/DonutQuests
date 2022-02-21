@@ -54,13 +54,10 @@ const tasks = [
           where: {
             user: $userAddress
             reserve: "0x9c58bacc331c9aa871afd802db6379a98e80cedb0xa91b9095efa6c0568467562032202108e49c9ef8"
-            currentATokenBalance_gt: $decideAmount
+            currentATokenBalance_gte: $decideAmount
           }
         ) {
           currentATokenBalance
-          reserve {
-            symbol
-          }
         }
       }
     `,
@@ -73,15 +70,14 @@ const tasks = [
     uri: "https://api.thegraph.com/subgraphs/name/agave-dao/agave-xdai",
     eligible: gql`
       query ($decideAmount: BigInt, $userAddress: ID!) {
-        frontend: user(id: $userAddress) {
-          reserves(
-            where: {
-              reserve: "0x9c58bacc331c9aa871afd802db6379a98e80cedb0xa91b9095efa6c0568467562032202108e49c9ef8"
-              currentTotalDebt_gte: $decideAmount
-            }
-          ) {
-            currentTotalDebt
+        frontend: userReserves(
+          where: {
+            user: $userAddress
+            reserve: "0x9c58bacc331c9aa871afd802db6379a98e80cedb0xa91b9095efa6c0568467562032202108e49c9ef8"
+            currentTotalDebt_gte: $decideAmount
           }
+        ) {
+          currentTotalDebt
         }
       }
     `,
