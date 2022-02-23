@@ -101,10 +101,7 @@ export default function Quest(props) {
         }
         break;
       case 3:
-        if (
-          data.frontend.reserves != undefined &&
-          data.frontend.reserves.length >= 1
-        ) {
+        if (data.frontend.length >= 1) {
           setStatus(true);
           setStatusText("Eligible");
         }
