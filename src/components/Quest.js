@@ -21,10 +21,11 @@ export default function Quest(props) {
   const [status, setStatus] = useState(false);
   const [statusText, setStatusText] = useState("Pending");
   const [round, setRound] = useState("1");
+  const [reward, setReward] = useState("100");
   const { account, library } = useWeb3React();
   let eligiblityCheckCompleted = false;
   const signer = library.getSigner();
-  const contractAddress = "0x69173859a8B2273FE9b8489823B489ac7915196B";
+  const contractAddress = "0x351203E0C223Ed580FB162f4CBb6312c2850E98a";
   const rewardsContract = new ethers.Contract(
     contractAddress,
     QuestRewards.abi,
@@ -34,9 +35,14 @@ export default function Quest(props) {
     async function fetchRound() {
       const roundNum = await rewardsContract.getRound(props.id);
       setRound(roundNum.toString());
-      console.log(`Task ${props.id} round is ${roundNum.toString()}`);
+    }
+    async function fetchReward() {
+      const taskReward = await rewardsContract.getReward(props.id);
+      setReward(taskReward.div(`${10 ** 18}`).toString());
+      console.log(reward);
     }
     fetchRound();
+    fetchReward();
   }, [props.id, rewardsContract]);
 
   let amount = BigInt(0);
@@ -165,7 +171,7 @@ export default function Quest(props) {
         <div className={styles.infoPanel}>
           <div className={styles.round}>Round {round}</div>
           <div className={styles.reward}>
-            100
+            {reward}
             <img src="./images/donut.png" alt="" />
           </div>
         </div>
