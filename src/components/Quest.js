@@ -198,6 +198,14 @@ export default function Quest(props) {
           )}
         </button>
       </div>
+
+      {(props.id == 2 || props.id == 3) && statusText != "Claim" && (
+        <div id={styles.paused}>
+          <div id={styles.pausedText}>
+            This quest is paused due to recent Agave exploit.
+          </div>
+        </div>
+      )}
     </div>
   );
 }
