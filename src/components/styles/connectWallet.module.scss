@@ -1,22 +1,119 @@
+.container {
+  display: flex;
+  // justify-content: right;
+  // align-items: center;
+  flex-direction: row;
+  gap: 10px;
 .connect {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  padding: 1rem;
-  background-color: rgba($color: wheat, $alpha: 0.5);
-  color: black;
-  border-radius: 10px;
-  border: 1px solid black;
+  // flex-direction: column;
+  padding: .8rem;
+  background-color: rgba($color:#60a5fa, $alpha: 0.2);
+  color: #60a5fa;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 15px;
+  border: 2px solid white;
   font-weight: bold;
-  font-size: 1.1rem;
+  font-size: 1rem;
   cursor: pointer;
 
   &:hover {
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
-      rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-    background-color: rgba($color: wheat, $alpha: 0.8);
+  //   box-shadow: 
+  //     // rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+  //     // rgba(0, 0, 0, 0.034) 0px 0px 0px 1px;
+  //     \\
+  // }
+    outline: 1px solid #60a5fa;
+    outline-offset: -3px;
+    border: 2px solid white;
+    
+    // margin-left: 12px;
   }
+}
+
+.chain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  padding: .8rem;
+  background-color: white;
+  color: black;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 15px;
+  border: 2px solid white;
+  font-weight: bold;
+  font-size: 1rem;
+  margin-left: 10px;
+  .chainLogo {
+    width: 35px;
+    padding-right: 15px;
+    float: right;
+  }
+}
+
+.addr {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 1rem;
+  padding: .8rem;
+  background-color: white;
+  color: black;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 15px;
+  border: 2px solid white;
+  // font-weight: bold;
+  font-size: 1rem;
+  margin-left: 10px;
+  .jazzIcon {
+    margin-top: 9px;
+    // width: 18px;
+    // padding-left: 15px;
+    
+    // float: left;
+  }
+}
+
+.chainError {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  padding: .8rem;
+  background-color: #DA2D2B;
+  color: white;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 15px;
+  border: 2px solid white;
+  // font-weight: bold;
+  font-size: 1rem;
+  margin-left: 10px;
+}
+
+.dropdown{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  padding: .5rem;
+  background-color: white;
+  color: black;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 15px;
+  border: 2px solid white;
+  // font-weight: bold;
+  font-size: .7rem;
+}
+
 }
 
 .walletBox {
@@ -25,6 +122,7 @@
   gap: 1rem;
   padding: 1rem;
   height: 100%;
+  color: black;
   .head {
     display: flex;
     flex-direction: row;
@@ -32,13 +130,13 @@
     align-items: center;
     width: 100%;
     .ask {
-      color: white;
+      color: black;
       font-size: 16px;
       font-weight: 600;
     }
     .closeBtn {
       all: unset;
-      color: white;
+      color: black;
       background-color: transparent;
       cursor: pointer;
     }
@@ -52,15 +150,15 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      color: black;
       font-size: 16px;
-      font-family: sans-serif !important;
+      font-family: sans-serif;
       font-weight: 600;
-      color: white;
       border: none;
-      border-radius: 10px;
+      border-radius: 20px;
       width: 100%;
-      background-color: rgb(44, 47, 54);
-      border: 1px solid rgb(64, 68, 79);
+      background-color: rgb(237, 238, 242);
+      border: 1px solid rgb(206, 208, 217);
       padding: 1rem;
       &:hover {
         border: 1px solid rgb(98, 144, 244);
@@ -69,23 +167,34 @@
   }
 }
 
+.errorModal {
+  display: flex;
+  background: white;
+  width: 1000px;
+  height: 1000px;
+  padding: 20px;
+  color: red
+}
+
 .content {
   position: relative;
-  left: 30vw;
+  margin: auto;
   top: 30vh;
-  width: 40vw;
-  background-color: rgb(25, 27, 31);
+  width: 600px;
+  background-color: rgb(255, 255, 255);
   border-radius: 20px;
   padding: 0.3rem;
 }
-// .overlay {
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   width: 100vw;
-//   height: 100vh;
-//   background-color: rgba(255, 255, 255, 0.75);
-// }
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(65, 65, 65, 0.85);
+  color: black
+}
 
 button {
   &:hover {
@@ -157,9 +266,9 @@ button {
 @media only screen and (min-width: 600px) and (max-width: 768px) {
   .content {
     position: relative;
-    left: 25vw;
-    top: 25vh;
-    width: 50vw;
+    // left: 25vw;
+    // top: 25vh;
+    // width: 50vw;
     background-color: rgb(25, 27, 31);
     border-radius: 20px;
     .walletBox {
@@ -175,7 +284,7 @@ button {
     position: relative;
     left: 25vw;
     top: 25vh;
-    width: 50vw;
+    // width: 50vw;
     background-color: rgb(25, 27, 31);
     border-radius: 20px;
     .walletBox {

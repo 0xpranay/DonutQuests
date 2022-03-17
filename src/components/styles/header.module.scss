@@ -4,13 +4,26 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 2rem;
+  padding: 1rem;   
   margin-bottom: 3rem;
+  // border: 2px solid red;
   .logo {
+    width: 400px;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    flex-direction: row;
+    gap: 15px;
+    // justify-content: center;
+    align-items: left;
+    .wordmark {
+      font-weight: 900;
+      line-height: 40px;
+      font-size: 1.4rem;
+      color: black;
+      float: left;
+    }
+    .mark {
+      width: 40px;
+    }
   }
 
   .connect {
@@ -23,7 +36,7 @@
     color: black;
     border-radius: 10px;
     font-weight: bold;
-    font-size: 1.1rem;
+    font-size: 1rem;
     cursor: pointer;
 
     &:hover {
