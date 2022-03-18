@@ -1,27 +1,28 @@
 .wrapper {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: top;
   flex-direction: column;
   padding: 1rem;
   width: 100%;
   .textCard {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    width: 650px;
+    justify-content: top;
+    align-items: top;
+    text-align: left;
     margin-bottom: 1rem;
-    color: rgb(236, 105, 24);
-    font-size: 2rem;
+    // background-color: rgb(255, 255, 255);
+    // box-shadow: 0px 0px 25px rgb(190, 190, 190);
+    font-size: 1.25rem;
     border-radius: 30px;
     padding: 3rem;
-    border: 1px solid black;
-    font-weight: bold;
+    border: 1px solid rgb(228, 206, 15);
+    // font-weight: bold;
     .text {
       color: #394150;
-      font-weight: bolder;
+      font-weight: lighter;
     }
   }
 }
