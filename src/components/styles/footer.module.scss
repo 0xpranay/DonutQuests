@@ -5,8 +5,8 @@
   margin-top: 2rem;
   padding: 1rem;
   height: 15rem;
-  background: rgba(rgb(0, 255, 195), 0.4);
-  border-radius: 10px;
+  background: rgba(rgb(255, 255, 255), 0.5);
+  // border-radius: 10px;
   color: rgba($color: pink, $alpha: 0.4);
   .brand {
     display: flex;
@@ -18,13 +18,13 @@
       font-weight: bolder;
     }
     .logo {
-      font-size: 5rem;
+      font-size: 2rem;
       font-weight: bolder;
       color: plum;
 
       .reddit {
         color: #394150;
-        font-size: 4rem;
+        font-size: 2rem;
         display: inline;
         text-decoration: none;
       }
@@ -66,7 +66,7 @@
     flex-direction: column;
     justify-content: space-around;
     padding: 10px;
-    padding-bottom: 5rem;
+    padding-bottom: 1rem;
     .linksWrap {
       display: flex;
       justify-content: center;
@@ -79,13 +79,13 @@
       justify-content: center;
       align-items: center;
       .logo {
-        font-size: 4rem;
+        font-size: 2rem;
         font-weight: bolder;
         color: plum;
 
         .reddit {
           color: #394150;
-          font-size: 3rem;
+          font-size: 2rem;
           display: inline;
           text-decoration: none;
         }
@@ -324,13 +324,13 @@
       justify-content: center;
       align-items: center;
       .logo {
-        font-size: 8rem;
+        font-size: 4rem;
         font-weight: bolder;
         color: plum;
 
         .reddit {
           color: #394150;
-          font-size: 5rem;
+          font-size: 4rem;
           display: inline;
           text-decoration: none;
         }

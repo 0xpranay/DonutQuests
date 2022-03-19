@@ -4,7 +4,7 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 1rem;   
+  padding: 2rem;   
   margin-bottom: 3rem;
   // border: 2px solid red;
   .logo {
@@ -20,9 +20,16 @@
       font-size: 1.4rem;
       color: black;
       float: left;
+      @media only screen and (max-width: 600px) {
+        line-height: 30px;
+        font-size: 0rem;
+      }
     }
     .mark {
       width: 40px;
+      @media only screen and (max-width: 600px) {
+        width: 30px;
+      }
     }
   }
 
@@ -54,10 +61,8 @@
   .header {
     margin-bottom: 0;
     padding: 0.7rem;
-    .connect {
-      // padding: 0.5rem;
-      background-color: rgba($color: orangered, $alpha: 0.5) !important;
-      font-size: 1rem;
+    .wordmark {
+      font-size: .1rem;
     }
   }
 }

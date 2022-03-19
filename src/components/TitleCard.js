@@ -27,10 +27,10 @@ export default function TitleCard() {
             <SocialIcon url="https://www.reddit.com/r/ethtrader/" network="reddit" bgColor="#c084fc" fgColor="#fff" style={{ height: 32, width: 32 }}/> 
           </div>
           <div className={styles.socials}>
-            <SocialIcon url="https://www.reddit.com/r/ethtrader/" network="discord" bgColor="#c084fc" fgColor="#fff" style={{ height: 32, width: 32 }}/> 
+            <SocialIcon url="https://discord.gg/9sNhkdf2" network="discord" bgColor="#c084fc" fgColor="#fff" style={{ height: 32, width: 32 }}/> 
           </div>
           <div className={styles.socials}>
-            <SocialIcon url="https://www.reddit.com/r/ethtrader/" network="github" bgColor="#c084fc" fgColor="#fff" style={{ height: 32, width: 32 }}/>
+            <SocialIcon url="https://github.com/EthTrader" network="github" bgColor="#c084fc" fgColor="#fff" style={{ height: 32, width: 32 }}/>
           </div>
         </div>
       </div>
