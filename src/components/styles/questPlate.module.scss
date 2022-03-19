@@ -1,26 +1,30 @@
 .questPlate {
   display: grid;
+  width: 1400px;
+  margin: auto;
   grid-template-columns: repeat(5, 1fr);
   gap: 1rem;
   padding: 1rem;
 }
 .textCard {
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.5);
+  width: 1400px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin-bottom: 1rem;
-  font-size: 2rem;
-  border-radius: 30px;
-  padding: 3rem;
-  border: 1px solid black;
-  font-weight: bold;
+  margin: auto;
+  padding: .8rem;
+  background-color: rgba($color:#60a5fa, $alpha: 0.2);
+  color: #60a5fa;
+
+  border-radius: 15px;
+  border: 2px solid white;
   .text {
-    color: #394150;
-    color: rgb(236, 105, 24);
-    font-weight: bolder;
+    font-weight: bold;
+    font-size: 1rem;
+    color: #60a5fa;
   }
 }
 

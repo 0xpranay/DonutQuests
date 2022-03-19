@@ -4,13 +4,21 @@ import { WalletConnectConnector } from "@web3-react/walletconnect-connector";
 import { PortisConnector } from "@web3-react/portis-connector";
 import { InjectedConnector } from "@web3-react/injected-connector";
 import { useWeb3React } from "@web3-react/core";
-import { useDonuts } from "./useDonuts";
-import { formatEther } from "@ethersproject/units";
-import { shortNum } from "./utils";
 import Jazzicon, { jsNumberForAddress } from 'react-jazzicon';
 import ReactModal from "react-modal";
 
-const ConnectYourWalletButton = ({ connect }) => {
+
+const ConnectYourWalletButton = ({ connect, count }) => {
+  console.log(count)
+
+  return (
+    <div className={styles.container}> 
+        { count ? <ErrorMessage /> : <ConnectButton connect = { connect } /> }
+    </div>
+  )
+}
+
+const ConnectButton = ( { connect } ) => {
   return (
     <div className={styles.container}> 
         <button className={styles.connect} onClick={ connect }>Connect Wallet</button>
@@ -45,14 +53,13 @@ const AddressModal = ( { address } ) => {
 
 
 const WalletDetails = () => {
-  const { activate, account, chainId } = useWeb3React(); 
-  const [error, setError] = useState(false);
+  const { active, account, chainId } = useWeb3React(); 
+  // const [error, setError] = useState(false);
 
-  if (chainId != 100) setError(true);
 
   return (
     <>
-      { error ? <ErrorMessage /> : <AddressModal address = { account } /> }
+      <AddressModal address = { account } />
     </>
           // {/* <div className="jazz-icon"><Jazzicon diameter={18} seed={jsNumberForAddress(address)} /></div> */}
   )
@@ -85,6 +92,7 @@ function activateInjectedProvider(providerName) {
   }
 }
 
+
 function ChainModal(props)  {
   <div className={styles.alert}>
     <strong>Wrong Network</strong>
@@ -92,9 +100,17 @@ function ChainModal(props)  {
   </div>
 }
 
+// function checkChain({ chainId }) {
+//   const [chainError, setChainError] = useState(false);
+
+//   if (chainId != 100) setChainError(true);
+
+//   return chainError;
+// }
 
 function WalletModal(props) {
   const { activate, chainId } = useWeb3React();
+
   ReactModal.setAppElement("#root");
   return (
     <ReactModal
@@ -132,6 +148,7 @@ function WalletModal(props) {
                 })
               );
               props.toggleModal();
+              props.toggleChain();
             }}
           >
             <div>{window.ethereum ? "Metamask" : "Install Metamask"}</div>
@@ -235,9 +252,7 @@ function WalletModal(props) {
               />
             </div>
           </button>
-          <div className={styles.alert}>
-            { alert ? <span><strong>Wrong Network</strong> Please connect to Gnosis chain in your wallet</span> : "" }
-          </div>
+            {/* { chainError ? <div className={styles.alert}><strong>Wrong Network</strong> Please connect to Gnosis chain in your wallet</div> : "" } */}
         </div>
       </div>
     </ReactModal>
@@ -247,25 +262,34 @@ function WalletModal(props) {
 
 
 
-export default function ConnectWallet(props) {
-  const { account, active, deactivate, library } = useWeb3React();
+export default function ConnectWallet() {
+  const { account, active, deactivate, library, chainId } = useWeb3React();
   const [modal, setModal] = useState(false);
+  const [chainError, setChainError] = useState(false);
+ 
+  function toggleChain() {
+    setChainError(true);
+    console.log("toggle the chain");
+  }
 
   function toggleModal() {
     if (modal) document.body.style.overflow = "visible";
     if (!modal) document.body.style.overflow = "hidden";
     setModal((modal) => !modal);
+    // setChainError(true);
+    // console.log(chainError);
   }
+
   return (
     <>
       {/* { !active ? <ConnectYourWalletButton connect={toggleModal} /> : <WalletDetails address={ address } donuts={ donutBalance } /> } */}
       <div className={styles.container}>
         <div className={styles.chain}><img src="./images/gnosis_logo.png" alt="" className={styles.chainLogo} /> Gnosis </div>
-        { !active ? <ConnectYourWalletButton connect={ toggleModal } /> : <WalletDetails /> }
-        <div className={styles.dropdown}> <img src="./images/icons.svg" alt="..." width="25px" /> </div>
+        { !active ? <ConnectYourWalletButton connect={ toggleModal } count={chainError} /> : <WalletDetails /> }
+        {/* <div className={styles.dropdown}> <img src="./images/icons.svg" alt="..." width="25px" /> </div> */}
       </div>
       
-      { modal ? <WalletModal show={ modal } toggleModal={ toggleModal } /> : <></> }
+      { modal ? <WalletModal show={ modal } toggleModal={ toggleModal } toggleChain={toggleChain} /> : <></> }
       {/* {!active ? (
         <div>
           <button onClick={toggleModal} className={styles.connect}>

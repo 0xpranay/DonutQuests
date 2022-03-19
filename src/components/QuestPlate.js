@@ -42,7 +42,7 @@ export default function QuestPlate() {
       ) : (
         <div style={{ padding: "1rem" }}>
           <div className={styles.textCard}>
-            <p className={styles.text}>Connect your wallet to view quests</p>
+            <p className={styles.text}>Please connect to Gnosis (formerly xDai) chain in your wallet.</p>
           </div>
         </div>
       )}

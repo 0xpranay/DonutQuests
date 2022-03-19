@@ -8,6 +8,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 150px;
+  // width: 155px;
   // flex-direction: column;
   padding: .8rem;
   background-color: rgba($color:#60a5fa, $alpha: 0.2);
@@ -129,6 +131,7 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    color: black;
     .ask {
       color: black;
       font-size: 16px;
@@ -146,6 +149,7 @@
     grid-template-columns: repeat(1, fr);
     gap: 1rem;
     width: 100%;
+    color: black;
     .wallet {
       display: flex;
       justify-content: space-between;
@@ -159,10 +163,27 @@
       width: 100%;
       background-color: rgb(237, 238, 242);
       border: 1px solid rgb(206, 208, 217);
-      padding: 1rem;
+      padding: .8rem;
       &:hover {
         border: 1px solid rgb(98, 144, 244);
       }
+    }
+    .alert {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 50px;
+      // line-height: 20px;
+      font-size: 16px;
+      font-family: sans-serif;
+      // font-weight: 600;
+      border: none;
+      border-radius: 20px;
+      width: 100%;
+      background-color: #DA2D2B;
+      color: white;
+      border: 1px solid rgb(206, 208, 217);
+      // padding: 1rem;
     }
   }
 }
@@ -197,6 +218,7 @@
 }
 
 button {
+  color:black;
   &:hover {
     cursor: pointer;
   }
@@ -206,6 +228,7 @@ button {
   position: fixed;
   width: 100%;
   height: 100%;
+  color: black;
 }
 
 .walletDetails {
@@ -246,14 +269,15 @@ button {
 @media only screen and (max-width: 600px) {
   .connect {
     padding: 0.5rem;
-    font-size: 15px;
+    font-size: .8rem;
   }
   .content {
     position: relative;
-    left: 5vw;
-    top: 20vh;
-    width: 90vw;
-    background-color: rgb(25, 27, 31);
+    margin: auto;
+    // left: 5vw;
+    // top: 20vh;
+    width: 65%;
+    background-color: white;
     border-radius: 20px;
     .walletBox {
       padding: 0.6rem;
@@ -266,10 +290,12 @@ button {
 @media only screen and (min-width: 600px) and (max-width: 768px) {
   .content {
     position: relative;
+    margin: auto;
     // left: 25vw;
     // top: 25vh;
     // width: 50vw;
-    background-color: rgb(25, 27, 31);
+    width: 400px;
+    background-color: white;
     border-radius: 20px;
     .walletBox {
       padding: 0.6rem;
@@ -282,10 +308,12 @@ button {
 @media only screen and (min-width: 769px) and (max-width: 1100px) {
   .content {
     position: relative;
-    left: 25vw;
-    top: 25vh;
+    margin: auto;
+    // left: 25vw;
+    // top: 25vh;
     // width: 50vw;
-    background-color: rgb(25, 27, 31);
+    width: 52%;
+    background-color: white;
     border-radius: 20px;
     .walletBox {
       padding: 0.6rem;
